@@ -29,6 +29,9 @@ Public Class Form1
             parsefilename = "createjob_env.txt"
         ElseIf structural.Checked Then
             parsefilename = "createjob_stc.txt"
+        Else
+            MsgBox("No Selection")
+            Exit Sub
         End If
 
         If TextBox1.Text <> "" Then
