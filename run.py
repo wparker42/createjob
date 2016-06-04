@@ -13,7 +13,7 @@ class CreateJobApp(tk.Tk):
             ('Structural',3)
         ]
 
-        deptvar = tk.IntVar()
+        self.deptvar = tk.IntVar()
 
         self.wm_title("Create Job")
 
@@ -28,7 +28,23 @@ class CreateJobApp(tk.Tk):
             text="Job Number"
         ).grid(row=0,column=3)
 
-        self.jobnum = tk.Entry(self).grid(row=1,column=3)
+        tk.Label(
+            self,
+            text="Job Name"
+        ).grid(row=2,column=3)
+
+        self.jobnum = tk.Entry(self)
+        self.jobnum.grid(row=1,column=3)
+
+        self.jobname = tk.Entry(self)
+        self.jobname.grid(row=3,column=3)
+
+        self.submit = tk.Button(
+            self,
+            text="Create Job",
+            command=self.on_button
+        )
+        self.submit.grid(row=4,column=0)
 
         r = 1
         for txt, val in departments:
@@ -38,9 +54,18 @@ class CreateJobApp(tk.Tk):
                 text=txt,
                 width=20,
                 padx=20, 
-                variable=deptvar,
-                value=val).grid(row=r,column=0)
+                variable=self.deptvar,
+                value=val)
+            self.departselect.grid(row=r,column=0)
             r+=1
+
+    def on_button(self):
+        print(self.jobname.get())
+        self.jobnametxt = self.jobname.get()
+        print(self.jobnum.get())
+        self.jobnumtxt = self.jobnum.get()
+        print(self.deptvar.get())
+        self.departselecttxt = self.deptvar.get()
 
 w = CreateJobApp()
 w.mainloop()
