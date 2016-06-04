@@ -18,7 +18,7 @@ def generatefile():
             relpath = os.path.relpath(path, rootpath)
             out_file.write(relpath+'\n')
             for f in files:
-                out_file.write("!"+path+'/'+f+','+relpath+'/#'+f+'\n')
+                out_file.write("!"+path+'/'+f+'|'+relpath+'/#'+f+'\n')
             out_file.close()
 
 generatefile()

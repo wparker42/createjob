@@ -44,7 +44,7 @@ Public Class Form1
                     If parline.StartsWith("!") Then
                         parline = parline.Substring(1)
                         parline = Replace(parline, "#", TextBox1.Text & " - ")
-                        ret = parline.IndexOf(",")
+                        ret = parline.IndexOf("|")
                         parline1 = parline.Substring(0, ret)
 
                         parline2 = parline.Substring(ret + 1)
