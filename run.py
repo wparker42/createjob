@@ -110,6 +110,15 @@ class CreateJobApp(tk.Tk):
                     newdirectory = destdirectory + '/' + line
                     print(newdirectory)
                     os.makedirs(newdirectory)
+                if line[:1] == '!':
+                    print("line: " + line)
+                    path, filename = line.split("{#job#}")
+                    newfilename = self.jobnumtxt + ' - ' + filename
+                    print("path: " + path)
+                    print("old filename: " + filename)
+                    print("new filename: " + newfilename)
+
+
 
             f.close()
         pass
@@ -132,7 +141,7 @@ class CreateJobApp(tk.Tk):
                 relpath = os.path.relpath(root, rootdirectory)
                 out_file.write(relpath+'\n')
                 for f in files:
-                    out_file.write("!"+root+'/'+f+'|'+relpath+'/#'+f+'\n')
+                    out_file.write("!"+root+'/'+'{#job#}'+f+'\n')
                 out_file.close()
         self.generatejobfolder()
 
