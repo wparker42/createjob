@@ -1,6 +1,9 @@
 import os
 import sys
 import tkinter as tk
+from tkinter import filedialog
+from mastertemplates import templatepathdict as paths
+
 
 class CreateJobApp(tk.Tk):
     """docstring for CreateJobApp"""
@@ -14,6 +17,7 @@ class CreateJobApp(tk.Tk):
         ]
 
         self.deptvar = tk.IntVar()
+        self.drivevar = tk.StringVar()
 
         self.wm_title("Create Job")
 
@@ -22,27 +26,42 @@ class CreateJobApp(tk.Tk):
             text="Select Department",
             padx=20
         ).grid(row=0,column=0)
-
+        
         tk.Label(
             self,
-            text="Job Number"
+            text="Drive"
         ).grid(row=0,column=3)
 
         tk.Label(
             self,
+            text="Job Number"
+        ).grid(row=1,column=3)
+
+        tk.Label(
+            self,
             text="Job Name"
-        ).grid(row=2,column=3)
+        ).grid(row=3,column=3)
+
+        self.pathentry = tk.Entry(self, textvariable=self.drivevar)
+        self.pathentry.grid(row=0,column=4)
+
+        self.drivebrowse = tk.Button(
+            self,
+            text="Browse",
+            command=self.on_browse
+        )
+        self.drivebrowse.grid(row=0,column=5)
 
         self.jobnum = tk.Entry(self)
-        self.jobnum.grid(row=1,column=3)
+        self.jobnum.grid(row=1,column=4)
 
         self.jobname = tk.Entry(self)
-        self.jobname.grid(row=3,column=3)
+        self.jobname.grid(row=3,column=4)
 
         self.submit = tk.Button(
             self,
             text="Create Job",
-            command=self.on_button
+            command=self.on_submit
         )
         self.submit.grid(row=4,column=0)
 
@@ -59,35 +78,50 @@ class CreateJobApp(tk.Tk):
             self.departselect.grid(row=r,column=0)
             r+=1
 
-    def on_button(self):
-        print(self.jobname.get())
+    def on_browse(self):
+        self.targetdirectory = filedialog.askdirectory()
+        print(self.targetdirectory)
+        self.drivevar.set(self.targetdirectory)
+
+    def checkiffolderexists(self):
+        print("Checking target directory...")
+        intent_dir = self.drivevar.get() + '/' + self.jobnumtxt
+        if os.path.isdir(intent_dir):
+            raise ValueError("Folder already exists")
+        else:
+            pass
+
+    def generatejobfolder(self):
+        self.checkiffolderexists()
+        pass
+
+    def generatefile(self):
+        departmentname, dirpaths = self.departmentpair
+
+        rootdirectory, textfile = dirpaths
+
+        # Delete old text file
+        if os.path.exists(textfile):
+            os.remove(textfile)
+
+        print('Parsing Master Folder and creating outputs...')
+        for path, dirs, files in os.walk(rootdirectory):
+            with open(textfile, "a") as out_file:
+                relpath = os.path.relpath(path, rootdirectory)
+                out_file.write(relpath+'\n')
+                for f in files:
+                    out_file.write("!"+path+'/'+f+'|'+relpath+'/#'+f+'\n')
+                out_file.close()
+        self.generatejobfolder()
+
+    def on_submit(self):
         self.jobnametxt = self.jobname.get()
-        print(self.jobnum.get())
         self.jobnumtxt = self.jobnum.get()
-        print(self.deptvar.get())
-        self.departselecttxt = self.deptvar.get()
+        self.departnum = self.deptvar.get()
+        self.departmentpair = paths[self.departnum]
+        self.generatefile()
 
-w = CreateJobApp()
-w.mainloop()
+if __name__ == "__main__":
+    w = CreateJobApp()
+    w.mainloop()
 
-
-def generatefile():
-
-    #rootpath = "directories/env/9999c/"
-    rootpath = sys.argv[1]
-    newfile = sys.argv[2]
-
-    # Delete old text file
-    #os.remove("textfiles/env.txt")
-    if os.path.exists(newfile):
-        os.remove(newfile)
-
-    for path, dirs, files in os.walk(rootpath):
-        with open(newfile, "a") as out_file:
-            relpath = os.path.relpath(path, rootpath)
-            out_file.write(relpath+'\n')
-            for f in files:
-                out_file.write("!"+path+'/'+f+'|'+relpath+'/#'+f+'\n')
-            out_file.close()
-
-generatefile()
