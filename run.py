@@ -22,10 +22,6 @@ class CreateJobApp(tk.Tk):
         self.drivevar = tk.StringVar()
         self.statusmsgtxt = tk.StringVar()
 
-        # Remove after testing
-        self.drivevar.set("/Users/tynan/Documents/Projects/createjob/directories/outputs")
-        self.statusmsgtxt.set("...")
-
         self.wm_title("Create Job")
 
         tk.Label(
