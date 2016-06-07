@@ -82,19 +82,43 @@ class CreateJobApp(tk.Tk):
                 indicatoron=0,
                 text=txt,
                 width=20,
-                padx=20, 
+                padx=20,
                 variable=self.deptvar,
-                value=val)
+                value=val
+            )
             self.departselect.grid(row=r,column=0)
             r+=1
+
 
     def on_browse(self):
         self.targetdirectory = filedialog.askdirectory()
         self.drivevar.set(self.targetdirectory)
 
-    def checkiffolderexists(self):
-        print("Checking target directory...")
-        intent_dir = self.drivevar.get() + '/' + self.jobnumtxt
+
+    def validate_form(self):
+        # department was selected
+        if self.deptvar.get() == 0:
+            self.statusmsgtxt.set("Select department.")
+            raise ValueError("Department selection out of range")
+        else:
+            pass
+
+        # job number isnt blank
+        if self.jobnum.get() is "":
+            self.statusmsgtxt.set("Enter number.")
+            raise ValueError("Job number out of range")
+        else:
+            pass
+
+        # job name isnt blank
+        if self.jobname.get() is "":
+            self.statusmsgtxt.set("Enter name.")
+            raise ValueError("Job name out of range")
+        else:
+            pass
+
+        # target directory doesnt already exist
+        intent_dir = self.drivevar.get() + '/' + self.jobnum.get()
         if os.path.isdir(intent_dir):
             self.statusmsgtxt.set("Folder already exists.")
             raise ValueError("Folder already exists")
@@ -102,11 +126,22 @@ class CreateJobApp(tk.Tk):
             self.intent_dir = intent_dir
             pass
 
+        # target directory is valid
+        if not os.path.exists(self.drivevar.get()):
+            self.statusmsgtxt.set("Invalid target directory.")
+            raise ValueError("Invalid target")
+        else:
+            disp = 'Parsing Master Folder and cloning into ' + intent_dir
+            self.statusmsgtxt.set(disp)
+            pass
+
+        self.statusmsgtxt.set("Validation passed.")
+
+
     def createjobfolder(self):
         departmentname, templatepath = self.templatesource
         intent_dir = self.intent_dir
-        print(departmentname, templatepath)
-        print('Parsing Master Folder and cloning into ' + intent_dir)
+
         try:
             shutil.copytree(templatepath, intent_dir)
         # Directories are the same
@@ -127,18 +162,16 @@ class CreateJobApp(tk.Tk):
                 os.rename(oldfilepath, newfilepath)
         pass
 
-    def verbose_run(self):
-        self.checkiffolderexists()
-        self.createjobfolder()
-        self.destroy()
 
     def on_submit(self):
+        self.validate_form()
         self.jobnametxt = self.jobname.get()
         self.jobnumtxt = self.jobnum.get()
         self.departnum = self.deptvar.get()
         self.templatesource = templatepathdict[self.departnum]
-        self.verbose_run()
-        print("Done.")
+        self.createjobfolder()
+        self.statusmsgtxt.set("Job folder created.")
+
 
 if __name__ == "__main__":
     w = CreateJobApp()
