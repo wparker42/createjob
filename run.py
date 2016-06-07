@@ -20,9 +20,11 @@ class CreateJobApp(tk.Tk):
 
         self.deptvar = tk.IntVar()
         self.drivevar = tk.StringVar()
+        self.statusmsgtxt = tk.StringVar()
 
         # Remove after testing
         self.drivevar.set("/Users/tynan/Documents/Projects/createjob/directories/outputs")
+        self.statusmsgtxt.set("...")
 
         self.wm_title("Create Job")
 
@@ -47,6 +49,9 @@ class CreateJobApp(tk.Tk):
             text="Job Name"
         ).grid(row=3,column=3)
 
+        self.statusmsg = tk.Label(self, textvariable=self.statusmsgtxt)
+        self.statusmsg.grid(row=5, column=1, columnspan=5, sticky="W")
+
         self.pathentry = tk.Entry(self, textvariable=self.drivevar)
         self.pathentry.grid(row=0,column=4)
 
@@ -68,7 +73,7 @@ class CreateJobApp(tk.Tk):
             text="Create Job",
             command=self.on_submit
         )
-        self.submit.grid(row=4,column=0)
+        self.submit.grid(row=4,column=4)
 
         r = 1
         for txt, val in departments:
@@ -85,13 +90,13 @@ class CreateJobApp(tk.Tk):
 
     def on_browse(self):
         self.targetdirectory = filedialog.askdirectory()
-        print(self.targetdirectory)
         self.drivevar.set(self.targetdirectory)
 
     def checkiffolderexists(self):
         print("Checking target directory...")
         intent_dir = self.drivevar.get() + '/' + self.jobnumtxt
         if os.path.isdir(intent_dir):
+            self.statusmsgtxt.set("Folder already exists.")
             raise ValueError("Folder already exists")
         else:
             self.intent_dir = intent_dir
@@ -122,13 +127,17 @@ class CreateJobApp(tk.Tk):
                 os.rename(oldfilepath, newfilepath)
         pass
 
+    def verbose_run(self):
+        self.checkiffolderexists()
+        self.createjobfolder()
+        self.destroy()
+
     def on_submit(self):
         self.jobnametxt = self.jobname.get()
         self.jobnumtxt = self.jobnum.get()
         self.departnum = self.deptvar.get()
         self.templatesource = templatepathdict[self.departnum]
-        self.checkiffolderexists()
-        self.createjobfolder()
+        self.verbose_run()
         print("Done.")
 
 if __name__ == "__main__":
