@@ -101,21 +101,22 @@ class CreateJobApp(tk.Tk):
             self.statusmsgtxt.set("Select department.")
             raise ValueError("Department selection out of range")
         else:
-            pass
+            self.departnum = self.deptvar.get()
+            self.templatesource = templatepathdict[self.departnum]
 
         # job number isnt blank
         if self.jobnum.get() is "":
             self.statusmsgtxt.set("Enter number.")
             raise ValueError("Job number out of range")
         else:
-            pass
+            self.jobnumtxt = self.jobnum.get()
 
         # job name isnt blank
         if self.jobname.get() is "":
             self.statusmsgtxt.set("Enter name.")
             raise ValueError("Job name out of range")
         else:
-            pass
+            self.jobnametxt = self.jobname.get()
 
         # target directory doesnt already exist
         intent_dir = self.drivevar.get() + '/' + self.jobnum.get()
@@ -124,7 +125,6 @@ class CreateJobApp(tk.Tk):
             raise ValueError("Folder already exists")
         else:
             self.intent_dir = intent_dir
-            pass
 
         # target directory is valid
         if not os.path.exists(self.drivevar.get()):
@@ -133,42 +133,45 @@ class CreateJobApp(tk.Tk):
         else:
             disp = 'Parsing Master Folder and cloning into ' + intent_dir
             self.statusmsgtxt.set(disp)
-            pass
 
         self.statusmsgtxt.set("Validation passed.")
+        return True
 
 
     def createjobfolder(self):
-        departmentname, templatepath = self.templatesource
-        intent_dir = self.intent_dir
+        if self.validate_form():
+            departmentname, templatepath = self.templatesource
+            intent_dir = self.intent_dir
 
-        try:
-            shutil.copytree(templatepath, intent_dir)
-        # Directories are the same
-        except shutil.Error as e:
-            print('Directory not copied. Error: %s' % e)
-        # Any error saying that the directory doesn't exist
-        except OSError as e:
-            print('Directory not copied. Error: %s' % e)
+            # Copy tree operation
+            try:
+                shutil.copytree(templatepath, intent_dir)
+            # Directories are the same
+            except shutil.Error as e:
+                print('Directory not copied. Error: %s' % e)
+            # Any error saying that the directory doesn't exist
+            except OSError as e:
+                print('Directory not copied. Error: %s' % e)
 
-        for root, dirs, files in os.walk(intent_dir):
-            # Exclude hidden files and folders
-            files = [f for f in files if not f[0] == '.']
-            dirs[:] = [d for d in dirs if not d[0] == '.']
-            for f in files:
-                oldfilepath = os.path.join(root, f)
-                newfilename = self.jobnumtxt + ' - ' + f
-                newfilepath = os.path.join(root, newfilename)
-                os.rename(oldfilepath, newfilepath)
-        pass
+            # Rename file & folder operation
+            for root, dirs, files in os.walk(intent_dir):
+                # Exclude hidden files and folders
+                files = [f for f in files if not f[0] == '.']
+                dirs[:] = [d for d in dirs if not d[0] == '.']
+                for f in files:
+                    oldfilepath = os.path.join(root, f)
+                    newfilename = self.jobnumtxt + ' - ' + f
+                    newfilepath = os.path.join(root, newfilename)
+                    os.rename(oldfilepath, newfilepath)
+                for d in dirs:
+                    if d[:1] == "_":
+                        olddirectoryname = os.path.join(root, d)
+                        newdirectoryname = "_" + self.jobnametxt
+                        newdirpath = os.path.join(root, newdirectoryname)
+                        os.rename(olddirectoryname, newdirpath)
 
 
     def on_submit(self):
-        self.validate_form()
-        self.jobnametxt = self.jobname.get()
-        self.jobnumtxt = self.jobnum.get()
-        self.departnum = self.deptvar.get()
-        self.templatesource = templatepathdict[self.departnum]
         self.createjobfolder()
         self.statusmsgtxt.set("Job folder created.")
 
@@ -176,4 +179,3 @@ class CreateJobApp(tk.Tk):
 if __name__ == "__main__":
     w = CreateJobApp()
     w.mainloop()
-
