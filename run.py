@@ -1,8 +1,10 @@
 import os
 import sys
 import tkinter as tk
+import shutil
 from tkinter import filedialog
-from mastertemplates import templatepathdict as paths
+from mastertemplates import templatepathdict
+import re
 
 
 class CreateJobApp(tk.Tk):
@@ -95,62 +97,39 @@ class CreateJobApp(tk.Tk):
             self.intent_dir = intent_dir
             pass
 
-    def generatejobfolder(self):
-        self.checkiffolderexists()
-        destdirectory = self.intent_dir
-        if not os.path.exists(destdirectory):
-            os.makedirs(destdirectory)
+    def createjobfolder(self):
+        departmentname, templatepath = self.templatesource
+        intent_dir = self.intent_dir
+        print(departmentname, templatepath)
+        print('Parsing Master Folder and cloning into ' + intent_dir)
+        try:
+            shutil.copytree(templatepath, intent_dir)
+        # Directories are the same
+        except shutil.Error as e:
+            print('Directory not copied. Error: %s' % e)
+        # Any error saying that the directory doesn't exist
+        except OSError as e:
+            print('Directory not copied. Error: %s' % e)
 
-        exlcudes = ['.','!']
-        with open(self.textfile, 'r') as f:
-            lines = f.read().splitlines()
-
-            for line in lines:
-                if line[:1] not in exlcudes:
-                    newdirectory = destdirectory + '/' + line
-                    print(newdirectory)
-                    os.makedirs(newdirectory)
-                if line[:1] == '!':
-                    print("line: " + line)
-                    path, filename = line.split("{#job#}")
-                    newfilename = self.jobnumtxt + ' - ' + filename
-                    print("path: " + path)
-                    print("old filename: " + filename)
-                    print("new filename: " + newfilename)
-
-
-
-            f.close()
-        pass
-
-    def generatefile(self):
-        departmentname, dirpaths = self.departmentpair
-        rootdirectory, textfile = dirpaths
-        self.textfile = textfile
-
-        # Delete old text file
-        if os.path.exists(textfile):
-            os.remove(textfile)
-
-        print('Parsing Master Folder and creating outputs...')
-        for root, dirs, files in os.walk(rootdirectory):
+        for root, dirs, files in os.walk(intent_dir):
             # Exclude hidden files and folders
             files = [f for f in files if not f[0] == '.']
             dirs[:] = [d for d in dirs if not d[0] == '.']
-            with open(textfile, "a") as out_file:
-                relpath = os.path.relpath(root, rootdirectory)
-                out_file.write(relpath+'\n')
-                for f in files:
-                    out_file.write("!"+root+'/'+'{#job#}'+f+'\n')
-                out_file.close()
-        self.generatejobfolder()
+            for f in files:
+                oldfilepath = os.path.join(root, f)
+                newfilename = self.jobnumtxt + ' - ' + f
+                newfilepath = os.path.join(root, newfilename)
+                os.rename(oldfilepath, newfilepath)
+        pass
 
     def on_submit(self):
         self.jobnametxt = self.jobname.get()
         self.jobnumtxt = self.jobnum.get()
         self.departnum = self.deptvar.get()
-        self.departmentpair = paths[self.departnum]
-        self.generatefile()
+        self.templatesource = templatepathdict[self.departnum]
+        self.checkiffolderexists()
+        self.createjobfolder()
+        print("Done.")
 
 if __name__ == "__main__":
     w = CreateJobApp()
