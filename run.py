@@ -99,6 +99,8 @@ class CreateJobApp(tk.Tk):
         else:
             self.departnum = self.deptvar.get()
             self.templatesource = templatepathdict[self.departnum]
+            # structural think's they're special
+            self.is_structural = True if self.departnum == 3 else False
 
         # job number isnt blank
         if self.jobnum.get() is "":
@@ -116,6 +118,8 @@ class CreateJobApp(tk.Tk):
 
         # target directory doesnt already exist
         intent_dir = self.drivevar.get() + '/' + self.jobnum.get()
+        if self.is_structural:
+            intent_dir = intent_dir + " " + self.jobnametxt
         if os.path.isdir(intent_dir):
             self.statusmsgtxt.set("Folder already exists.")
             raise ValueError("Folder already exists")
@@ -137,11 +141,10 @@ class CreateJobApp(tk.Tk):
     def createjobfolder(self):
         if self.validate_form():
             departmentname, templatepath = self.templatesource
-            intent_dir = self.intent_dir
 
             # Copy tree operation
             try:
-                shutil.copytree(templatepath, intent_dir)
+                shutil.copytree(templatepath, self.intent_dir)
             # Directories are the same
             except shutil.Error as e:
                 print('Directory not copied. Error: %s' % e)
@@ -150,7 +153,7 @@ class CreateJobApp(tk.Tk):
                 print('Directory not copied. Error: %s' % e)
 
             # Rename file & folder operation
-            for root, dirs, files in os.walk(intent_dir):
+            for root, dirs, files in os.walk(self.intent_dir):
                 # Exclude hidden files and folders
                 files = [f for f in files if not f[0] == '.']
                 dirs[:] = [d for d in dirs if not d[0] == '.']
