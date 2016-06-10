@@ -3,7 +3,7 @@ import sys
 import tkinter as tk
 import shutil
 from tkinter import filedialog
-from mastertemplates import templatepathdict
+from mastertemplates import *
 import re
 
 
@@ -15,11 +15,13 @@ class CreateJobApp(tk.Tk):
         departments = [
             ('Civil',1),
             ('Environmental',2),
-            ('Structural',3)
+            ('Structural',3),
+            # Remove after testing
+            ('Testing', 4)
+
         ]
 
         self.deptvar = tk.IntVar()
-        self.drivevar = tk.StringVar()
         self.statusmsgtxt = tk.StringVar()
 
         self.wm_title("Create Job")
@@ -32,11 +34,6 @@ class CreateJobApp(tk.Tk):
         
         tk.Label(
             self,
-            text="Drive"
-        ).grid(row=0,column=3)
-
-        tk.Label(
-            self,
             text="Job Number"
         ).grid(row=1,column=3)
 
@@ -47,16 +44,6 @@ class CreateJobApp(tk.Tk):
 
         self.statusmsg = tk.Label(self, textvariable=self.statusmsgtxt)
         self.statusmsg.grid(row=5, column=1, columnspan=5, sticky="W")
-
-        self.pathentry = tk.Entry(self, textvariable=self.drivevar)
-        self.pathentry.grid(row=0,column=4)
-
-        self.drivebrowse = tk.Button(
-            self,
-            text="Browse",
-            command=self.on_browse
-        )
-        self.drivebrowse.grid(row=0,column=5)
 
         self.jobnum = tk.Entry(self)
         self.jobnum.grid(row=1,column=4)
@@ -80,16 +67,11 @@ class CreateJobApp(tk.Tk):
                 width=20,
                 padx=20,
                 variable=self.deptvar,
-                value=val
+                value=val,
+                command=self.on_select_department
             )
             self.departselect.grid(row=r,column=0)
             r+=1
-
-
-    def on_browse(self):
-        self.targetdirectory = filedialog.askdirectory()
-        self.drivevar.set(self.targetdirectory)
-
 
     def validate_form(self):
         # department was selected
@@ -117,7 +99,7 @@ class CreateJobApp(tk.Tk):
             self.jobnametxt = self.jobname.get()
 
         # target directory doesnt already exist
-        intent_dir = self.drivevar.get() + '/' + self.jobnum.get()
+        intent_dir = self.server_path + '/' + self.jobnum.get()
         if self.is_structural:
             intent_dir = intent_dir + " " + self.jobnametxt
         if os.path.isdir(intent_dir):
@@ -127,7 +109,7 @@ class CreateJobApp(tk.Tk):
             self.intent_dir = intent_dir
 
         # target directory is valid
-        if not os.path.exists(self.drivevar.get()):
+        if not os.path.exists(self.server_path):
             self.statusmsgtxt.set("Invalid target directory.")
             raise ValueError("Invalid target")
         else:
@@ -140,8 +122,8 @@ class CreateJobApp(tk.Tk):
 
     def createjobfolder(self):
         if self.validate_form():
+            print("Validation passed, creating folders...")
             departmentname, templatepath = self.templatesource
-
             # Copy tree operation
             try:
                 shutil.copytree(templatepath, self.intent_dir)
@@ -168,11 +150,47 @@ class CreateJobApp(tk.Tk):
                         newdirectoryname = "_" + self.jobnametxt
                         newdirpath = os.path.join(root, newdirectoryname)
                         os.rename(olddirectoryname, newdirpath)
+            print("done.")
+            self.statusmsgtxt.set("Job folder created.")
+
+    def set_server(self, arg):
+        self.server_name = self.server_var.get()
+        #print('server name: ' + self.server_name)
+        self.server_path = serverpathdict[self.server_name]
+        #print('server path: ' + self.server_path)
+
+    def on_select_department(self):
+        try:
+            self.serverlabel.destroy()
+            self.pathentry.destroy()
+        except:
+            pass
+
+        self.serverlabel = tk.Label(
+            self,
+            text="Server"
+        )
+        self.serverlabel.grid(row=0,column=3)
+
+        self.server_var = tk.StringVar(self)
+        dept_var = self.deptvar.get()
+        server_list = serverlistdict[dept_var]
+        optionlist = []
+        for pair in server_list:
+            optionlist.append(pair)
+
+        self.pathentry = tk.OptionMenu(
+            self,
+            self.server_var,
+            *optionlist,
+            command=self.set_server
+        )
+        self.pathentry.grid(row=0,column=4)
 
 
     def on_submit(self):
         self.createjobfolder()
-        self.statusmsgtxt.set("Job folder created.")
+        
 
 
 if __name__ == "__main__":
