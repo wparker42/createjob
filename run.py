@@ -15,10 +15,7 @@ class CreateJobApp(tk.Tk):
         departments = [
             ('Civil',1),
             ('Environmental',2),
-            ('Structural',3),
-            # Remove after testing
-            ('Testing', 4)
-
+            ('Structural',3)
         ]
 
         self.deptvar = tk.IntVar()
