@@ -1,6 +1,5 @@
 # createjob
 
-___
 
 ###### A simple hierarchical file and folder creation renaming tool using a template directory as the source for the target directory
 *(c) JVA, Inc.; all rights reserved*
