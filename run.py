@@ -1,8 +1,8 @@
 import os
 import sys
 import tkinter as tk
+from tkinter import messagebox as tkMessageBox
 import shutil
-from tkinter import filedialog
 from mastertemplates import *
 import re
 
@@ -95,6 +95,13 @@ class CreateJobApp(tk.Tk):
         else:
             self.jobnametxt = self.jobname.get()
 
+        # Server has been selected
+        if (self.server_var.get() is None) or (self.server_var.get() == ""):
+            self.statusmsgtxt.set("Select a target drive.")
+            raise ValueError("No target server selected")
+        else:
+            pass
+
         # target directory doesnt already exist
         intent_dir = self.server_path + '/' + self.jobnum.get()
         if self.is_structural:
@@ -110,12 +117,9 @@ class CreateJobApp(tk.Tk):
             self.statusmsgtxt.set("Invalid target directory.")
             raise ValueError("Invalid target")
         else:
-            disp = 'Parsing Master Folder and cloning into ' + intent_dir
-            self.statusmsgtxt.set(disp)
+            pass
 
-        self.statusmsgtxt.set("Validation passed.")
         return True
-
 
     def createjobfolder(self):
         if self.validate_form():
@@ -148,7 +152,9 @@ class CreateJobApp(tk.Tk):
                         newdirpath = os.path.join(root, newdirectoryname)
                         os.rename(olddirectoryname, newdirpath)
             print("done.")
-            self.statusmsgtxt.set("Job folder created.")
+
+            tkMessageBox.showinfo("Success", "Job Folder Created")
+            self.destroy()
 
     def set_server(self, arg):
         self.server_name = self.server_var.get()
@@ -186,8 +192,7 @@ class CreateJobApp(tk.Tk):
 
 
     def on_submit(self):
-        self.createjobfolder()
-        
+        self.createjobfolder()  
 
 
 if __name__ == "__main__":
