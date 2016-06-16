@@ -119,7 +119,13 @@ class CreateJobApp(tk.Tk):
         else:
             pass
 
-        return True
+        popup_text = 'Press OK to begin. Process may take a while.'
+        if tkMessageBox.askokcancel("Alert", popup_text):
+            self.statusmsgtxt.set(" ")
+            return True
+        else:
+            self.statusmsgtxt.set("Cancelled by user.")
+            raise ValueError("Cancelled by User")
 
     def createjobfolder(self):
         if self.validate_form():
@@ -192,7 +198,8 @@ class CreateJobApp(tk.Tk):
 
 
     def on_submit(self):
-        self.createjobfolder()  
+        self.statusmsgtxt.set(" ")
+        self.createjobfolder()
 
 
 if __name__ == "__main__":
