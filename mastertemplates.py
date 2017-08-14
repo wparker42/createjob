@@ -27,9 +27,9 @@ serverlistdict = {
 serverpathdict = {
     'Denver (Q:\)': r'\\JTIME1\den-civ',
     'Boulder (J:\)': r'\\bldr-civil1\bldr_civil',
-    'Fort Collins (V:\)': r'\\server-fc\FC-Civil-Jobs',
+    'Fort Collins (V:\)': r'\\server-fc-new\FC-Civil-Jobs',
     'Winter Park (K:\)': r'\\SERVER-WP-NEW\WP-Civil-Jobs',
     'Boulder (Z:\)': r'\\BLDR-STRUCT1\bldr_structural',
-    'Fort Collins (Y:\)': r'\\server-fc\0jobs',
+    'Fort Collins (Y:\)': r'\\server-fc-new\FC-Structural-Jobs',
     'Winter Park (X:\)': r'\\server-wp-new\WP-Jobs'
 }
