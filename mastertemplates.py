@@ -25,7 +25,7 @@ serverlistdict = {
 }
 
 serverpathdict = {
-    'Denver (Q:\)': r'\\JTIME1\den-civ',
+    'Denver (Q:\)': r'\\Server-den\den-civ',
     'Boulder (J:\)': r'\\bldr-civil1\bldr_civil',
     'Fort Collins (V:\)': r'\\server-fc-new\fc-civil-jobs',
     'Winter Park (K:\)': r'\\SERVER-WP-NEW\WP-Civil-Jobs',
