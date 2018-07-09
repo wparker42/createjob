@@ -9,13 +9,15 @@ serverlistdict = {
         'Denver (Q:\)',
         'Boulder (J:\)',
         'Fort Collins (V:\)', 
-        'Winter Park (K:\)'
+        'Winter Park (K:\)',
+        'Glenwood Springs (G:\)'
     ],
     2: [
         'Denver (Q:\)',
         'Boulder (J:\)',
         'Fort Collins (V:\)', 
-        'Winter Park (K:\)'
+        'Winter Park (K:\)',
+        'Glenwood Springs (G:\)'
     ],
     3: [
         'Boulder (Z:\)',
@@ -31,5 +33,6 @@ serverpathdict = {
     'Winter Park (K:\)': r'\\SERVER-WP-NEW\WP-Civil-Jobs',
     'Boulder (Z:\)': r'\\BLDR-STRUCT1\bldr_structural',
     'Fort Collins (Y:\)': r'\\server-fc-new\fc-Structural-Jobs',
-    'Winter Park (X:\)': r'\\server-wp-new\WP-Jobs'
+    'Winter Park (X:\)': r'\\server-wp-new\WP-Jobs',
+    'Glenwood Springs (G:\)': r'\\\\Server-gws\gws-civ'
 }
