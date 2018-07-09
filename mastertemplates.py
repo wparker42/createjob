@@ -34,5 +34,5 @@ serverpathdict = {
     'Boulder (Z:\)': r'\\BLDR-STRUCT1\bldr_structural',
     'Fort Collins (Y:\)': r'\\server-fc-new\fc-Structural-Jobs',
     'Winter Park (X:\)': r'\\server-wp-new\WP-Jobs',
-    'Glenwood Springs (G:\)': r'\\\\Server-gws\gws-civ'
+    'Glenwood Springs (G:\)': r'\\Server-gws\gws-civ'
 }
