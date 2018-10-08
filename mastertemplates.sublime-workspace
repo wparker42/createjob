@@ -1,0 +1,546 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"mes",
+				"message_text"
+			],
+			[
+				"ser",
+				"server_name"
+			],
+			[
+				"serv",
+				"server_path"
+			],
+			[
+				"int",
+				"intent_dir"
+			],
+			[
+				"path",
+				"pathentry"
+			],
+			[
+				"se",
+				"server_var"
+			],
+			[
+				"tar",
+				"target_dict"
+			],
+			[
+				"dep",
+				"dept_var"
+			],
+			[
+				"job",
+				"jobname"
+			],
+			[
+				"in",
+				"intent_dir"
+			],
+			[
+				"old",
+				"olddirectoryname"
+			],
+			[
+				"new",
+				"newdirectoryname"
+			],
+			[
+				"joi",
+				"join"
+			],
+			[
+				"Val",
+				"ValueError"
+			],
+			[
+				"jobn",
+				"jobnum"
+			],
+			[
+				"va",
+				"validate_form"
+			],
+			[
+				"ren",
+				"render_result"
+			],
+			[
+				"pon",
+				"pondvol"
+			],
+			[
+				"Fo",
+				"Form"
+			],
+			[
+				"for",
+				"form"
+			],
+			[
+				"fo",
+				"form"
+			],
+			[
+				"re",
+				"rewrite_form"
+			],
+			[
+				"f",
+				"forms"
+			],
+			[
+				"form",
+				"formdata"
+			],
+			[
+				"Pon",
+				"PondData"
+			],
+			[
+				"l",
+				"lw_ratio"
+			],
+			[
+				"giv",
+				"givens"
+			],
+			[
+				"gi",
+				"givens"
+			],
+			[
+				"w",
+				"width"
+			],
+			[
+				"lis",
+				"list_of_givens"
+			],
+			[
+				"sol",
+				"solvable_scenarios"
+			],
+			[
+				"vo",
+				"volume1"
+			],
+			[
+				"de",
+				"depth"
+			],
+			[
+				"pn",
+				"pondmanager"
+			],
+			[
+				"pond",
+				"pondmanager"
+			],
+			[
+				"po",
+				"pondvol"
+			],
+			[
+				"la",
+				"lazy_url"
+			],
+			[
+				"s",
+				"site_imperviousness"
+			],
+			[
+				"sit",
+				"site_prop_list"
+			],
+			[
+				"si",
+				"site_prop_list"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "README.md",
+			"settings":
+			{
+				"buffer_size": 493,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 104.0,
+		"last_filter": "install",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"Hex",
+				"Hex Viewer: Show Hex Edit Panel"
+			],
+			[
+				"Package Control: He",
+				"Package Control: Add Channel"
+			]
+		],
+		"width": 416.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/WTP/Documents/createjob/mastertemplates.py",
+		"/C/Users/WTP/Desktop/Meadowlark.msg",
+		"/C/Users/WTP/Desktop/South Trans Propane Bid Opening.msg",
+		"/C/Users/WTP/Desktop/DO THIS FIRST.txt",
+		"/C/Users/WTP/Desktop/Invitation.msrcIncident",
+		"/C/Users/WTP/Desktop/2018-08-23.docx",
+		"/C/Users/WTP/Downloads/invite.ics",
+		"/C/Users/WTP/Documents/createjob/README.md",
+		"/C/Users/WTP/Downloads/original_msg.html",
+		"/C/Users/WTP/AppData/Local/Microsoft/Windows/Temporary Internet Files/Content.Outlook/F8RK5JAF/email (002).txt",
+		"/C/Users/WTP/AppData/Local/Microsoft/Windows/Temporary Internet Files/Content.Outlook/F8RK5JAF/email.txt",
+		"/C/Users/WTP/Desktop/My Places.kmz",
+		"/C/Users/WTP/Desktop/My Places.kml",
+		"/Q/2860c/Drawings/Received/Wenk/20180608 - Lsite/w-17017-base - Standard/w-17017-base.txt",
+		"/C/Users/WTP/AppData/Local/Microsoft/Windows/Temporary Internet Files/Content.Outlook/F8RK5JAF/PL+Trees.txt",
+		"//jtime1/DEN-CIV/2484c/Construction Administration/2018 Walk and Drainage Improvements/d2608c - FG.xml",
+		"/P/Bluebeam/2017/CAD/License.txt",
+		"/C/Users/WTP/AppData/Local/Microsoft/Windows/Temporary Internet Files/Content.Outlook/F8RK5JAF/PlazaSpots_030518.txt",
+		"/C/Users/WTP/AppData/Local/Microsoft/Windows/Temporary Internet Files/Content.Outlook/F8RK5JAF/PlazaSpots_022618.txt",
+		"//jtime1/DEN-CIV/2819c/Drawings/Received/DHM/20180206 - Lsite/Parker_SchoolHouse_DD.txt",
+		"/C/Users/WTP/Downloads/original_msg.txt",
+		"/C/Users/WTP/AppData/Local/Temp/Temp1_CoT PSF - Csite - 20180206.zip/x2660c-Csite.txt",
+		"//jtime1/DEN-CIV/2458c/Drawings/2458c-C2.0.dwg",
+		"/C/Users/WTP/Desktop/Ralston AB dwgs/acad.err",
+		"//jtime1/DEN-CIV/2680.2/Drawings/Received/Martin Martin/20171205 - Survey/E-site.txt",
+		"/C/Users/WTP/Documents/createjob/run.py",
+		"/C/Users/WTP/Desktop/Projects/Bluejay/bluejay-production-environment/config.py",
+		"/C/Users/WTP/Desktop/Projects/tclock/run.py",
+		"/C/Users/WTP/Desktop/Projects/tclock/requirements.txt",
+		"/C/Users/WTP/source/repos/wiki/config.py",
+		"/C/Users/WTP/source/repos/wiki/wiki/config.py",
+		"/C/wiki/README.md",
+		"/C/wiki/wiki/config.py",
+		"//jtime1/c$/inetpub/wwwroot/test.cgi",
+		"//jtime1/c$/inetpub/wwwroot/test.pl",
+		"//jtime1/c$/inetpub/wwwroot/foswiki/bin/LocalLib.cfg",
+		"//jtime1/c$/inetpub/wwwroot/foswiki/bin/LocalLib.cfg.txt",
+		"/C/Users/WTP/Desktop/boltwire/install.txt",
+		"/C/Users/WTP/AppData/Local/Microsoft/Windows/Temporary Internet Files/Content.Outlook/F8RK5JAF/ATT00001.txt",
+		"//billing1/c$/jva/Site.Master",
+		"//bldr-civil1/bldr_civil/CIVIL/NJFT/CreateJob.txt",
+		"//bldr-dc1/netlogon/fc_login.bat",
+		"/C/Users/WTP/Documents/createjob/build/run/warnrun.txt",
+		"/C/Users/WTP/AppData/Local/Temp/Temp1_x2563c-Csite - 2013.zip/x2563c-Csite.txt",
+		"/C/Users/WTP/Desktop/License.txt",
+		"/C/Users/WTP/Desktop/340300 - 4775 Walnut - Site Photometric - etransmit 02 06 2017/340300 - 4775 Walnut - Site Photometric.txt",
+		"/C/Users/WTP/Desktop/gnirehtet-v1.0.1/gnirehtet",
+		"//jtime1/JVAGIS/test.txt",
+		"/C/Users/WTP/Downloads/typarker123@gmail.com.ics",
+		"/C/Users/WTP/AppData/Local/Microsoft/Windows/Temporary Internet Files/Content.Outlook/F8RK5JAF/6121 170515 SAN AB.TXT",
+		"/C/Users/WTP/Desktop/6121-170413 AB SHOTS.TXT",
+		"/C/Users/WTP/AppData/Local/Microsoft/Windows/Temporary Internet Files/Content.Outlook/F8RK5JAF/6121-170413 AB SHOTS.TXT",
+		"//Adminserver2/Apps/Bentley/Flowmaster/Site Activation Key.txt",
+		"/C/JVA_C3D/acad.lin",
+		"/J/2546c/Drawings/~References/newlt.lin",
+		"/C/Users/WTP/Desktop/acad.lin",
+		"/J/2546c/Drawings/~References/new-acad.lin",
+		"/P/Bluebeam/2016/CAD/License.txt",
+		"/Q/2563c/Reports/Calculations/Civil 3D Pond Volume Stage Storage/North Pond Stage Storage Volume.txt",
+		"//jtime1/DEN-CIV/2608c/Drawings/Downloads/Design Concepts/20170103 - Titleblock/PlotCfgs/DCLA.ctb",
+		"/Q/2563c/Reports/Calculations/Civil 3D Pond Volume Stage Storage/North Pond Stage Storage Volume.AeccSST",
+		"/Q/2563c/Reports/Calculations/Civil 3D Pond Volume Stage Storage/North Pond Stage Storage Volume.tsv",
+		"/J/2563c/_README.md",
+		"/C/Users/WTP/Desktop/test2.cmd",
+		"/C/Users/WTP/Desktop/Map Denver Q Drive.xml",
+		"/C/Users/WTP/Desktop/Denver Fix.bat",
+		"/C/Users/WTP/Desktop/Kill Explorer.bat",
+		"/C/Users/WTP/Desktop/Map Q Drive.bat",
+		"/C/Users/WTP/Desktop/q-map_denver.bat",
+		"/C/Users/WTP/Desktop/test.bat",
+		"/C/Users/WTP/Desktop/Map Q Drive.xml",
+		"/C/Users/WTP/Desktop/Denver Fix",
+		"/M/Civil_Library/Support/win.script/server2user.bat",
+		"/M/Civil_Library/Support/win.script/q-map_denver.bat",
+		"/C/Users/WTP/Desktop/q-map_denver",
+		"/C/Users/WTP/Desktop/logonqmap.bat",
+		"/C/Users/WTP/Desktop/logonqmap1.bat",
+		"/C/Users/Public/Transoft Solutions/AutoTURN 10/AutoTURN.txt",
+		"/C/Users/WTP/Desktop/amd989-Symlinker-020b58a/README.md",
+		"/C/Users/WTP/Desktop/pdf-jailbreak-master/pdf-jailbreak-master/jailbreak.cmd",
+		"/Q/2458c/__For HMM Review/readme.txt",
+		"/Q/2484c/Construction Administration/RFIs/Unanswered RFIs/RFI 126/Note.txt",
+		"/C/Users/WTP/Desktop/JVA 60th Anniversary Party.ics",
+		"/C/Users/WTP/Desktop/JVA Rockies Baseball Game.ics",
+		"/Q/2484c/Construction Administration/Product Submittals/011 Not yet reviewed by JVA - see note inside/Note.txt",
+		"/Q/2484c/Construction Administration/Product Submittals/011 Not Reviewed by JVA/Note.txt",
+		"/C/Users/WTP/Documents/createjob/temp.py",
+		"/Q/_create job folder [TESTING]/createjob_civ.txt",
+		"//jtime1/DEN-CIV/_create job folder [TESTING]/createjob_civ.txt",
+		"/C/Users/WTP/Documents/createjob/.gitignore",
+		"/C/Users/WTP/Dropbox/JVA/stc.txt",
+		"/C/Users/WTP/Dropbox/JVA/env.txt",
+		"/Q/_create job folder [TESTING]/createjob_env.txt",
+		"/C/Users/WTP/Dropbox/JVA/run.py",
+		"/C/Users/WTP/AppData/Local/Temp/Temp1_genome_William_Parker_Full_20160411141808.zip/genome_William_Parker_Full_20160411141808.txt",
+		"/C/Users/WTP/Desktop/acad.err",
+		"/C/Program Files (x86)/Haestad/Installation Instructions.txt",
+		"/P/Haestad/Installation Instructions.txt",
+		"/C/Users/WTP/AppData/Local/Microsoft/Windows/Temporary Internet Files/Content.Outlook/06BGEE5I/GeneralNotes-BAR.txt",
+		"//jtime1/DEN-CIV/2458c/Reports/Drainage/Preliminary Drainage Report - Submittal #3/README.txt",
+		"/C/Users/WTP/AppData/Local/Temp/Temp1_JCPS 2016 DW Paving Elec - Standard.zip/JCPS 2016 DW Paving Elec.txt",
+		"/C/Users/WTP/Desktop/Jeffco Closeout Documents/CG018.6.b - Record Drawings/README.md",
+		"/C/Users/WTP/Desktop/Jeffco Closeout Documents/CG018.6.b - Record Drawings/note.md",
+		"/C/Users/WTP/Desktop/Jeffco Closeout Documents/CG018.6.b - Record Drawings/note.txt",
+		"/C/Users/WTP/Desktop/Pages from 02DR40-East of Kipling Pkwy-reduced[good].pdf",
+		"/C/Users/WTP/Desktop/Pages from 02DR40-East of Kipling Pkwy-reduced[bad].pdf",
+		"/C/Users/WTP/Desktop/vp-outline.lsp",
+		"/C/Users/WTP/Documents/parker-engineering/app/templates/neural.html",
+		"/C/Users/WTP/Documents/parker-engineering/config.py",
+		"/C/Users/WTP/Documents/parker-engineering/app/templates/index.html",
+		"/C/Users/WTP/Documents/parker-engineering/app/dream/views.py",
+		"/C/Users/WTP/Documents/parker-engineering/app/__init__.py",
+		"/C/Users/WTP/Documents/neural/app.py",
+		"/C/Users/WTP/Documents/parker-engineering/app/dream/__init__.py",
+		"/C/Users/WTP/Documents/parker-engineering/app/templates/_navigation.html",
+		"/C/Users/WTP/Documents/parker-engineering/app/pondvol/forms.py",
+		"/C/Users/WTP/Documents/parker-engineering/app/pondvol/pondmanager.py",
+		"/C/Users/WTP/Documents/parker-engineering/app/templates/pondvol/calculator.html",
+		"/C/Users/WTP/Documents/parker-engineering/app/pondvol/views.py",
+		"/C/Users/WTP/Documents/parker-engineering/app/cippcalc/astm/views.py",
+		"/C/Users/WTP/Documents/parker-engineering/app/cippcalc/astm/linermanager.py",
+		"/J/2490c/Drawings/Downloads/Jeffco/20150922/7350 (Columbine HS)/2012/C1.0 Cover.txt",
+		"/C/Users/WTP/Documents/parker-engineering/app/templates/form-macros.html",
+		"/C/Users/WTP/Documents/parker-engineering/app/cippcalc/forms.py",
+		"/C/Users/WTP/Documents/parker-engineering/app/templates/toolbox.html",
+		"/C/Users/WTP/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/WTP/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/WTP/Desktop/book1.txt"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"PD",
+			"UD",
+			"dash",
+			"wat",
+			"filedialog",
+			"re(",
+			"re.",
+			"re",
+			"Re",
+			"re",
+			"test",
+			"drivevar",
+			"on_browse",
+			"drivevar",
+			"targetdirectory",
+			"txt",
+			"self.server_name",
+			"printshit",
+			"serverdict",
+			"server_list",
+			"server_dict",
+			"<EQ>",
+			"print",
+			"template_str",
+			" = ",
+			"data",
+			"Multidict",
+			"MultiDict",
+			"object_data",
+			"data",
+			"form",
+			"givens.items()",
+			"list_of_givens",
+			"Average",
+			"Prismoidal",
+			"vardict",
+			"value",
+			"SelectField",
+			"itemgetter",
+			"SelectField",
+			"astm",
+			"ProcSolve",
+			"greyout",
+			"\t"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "README.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 493,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "mastertemplates.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 254.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
