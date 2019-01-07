@@ -71,13 +71,20 @@ class CreateJobApp(tk.Tk):
             r+=1
 
     def validate_form(self):
-        # department was selected
+        # department was selected and template is accessible
         if self.deptvar.get() == 0:
             self.statusmsgtxt.set("Select department.")
-            raise ValueError("Department selection out of range")
+            raise ValueError("Department selection out of range.")
         else:
             self.departnum = self.deptvar.get()
             self.templatesource = templatepathdict[self.departnum]
+            if not os.path.exists(self.templatesource[1]):
+                self.statusmsgtxt.set(
+                    "Cannot locate template. Check network connection."
+                    )
+                raise ValueError(
+                    "Cannot locate template. Check network connection."
+                    )
             # structural think's they're special
             self.is_structural = True if self.departnum == 3 else False
 
