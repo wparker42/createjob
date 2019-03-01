@@ -40,3 +40,5 @@ serverpathdict = {
     'Glenwood Springs (G:\)': r'\\Server-gws\gws-civ',
     'Environmental (N:\)': r'\\bldr-civil1\bdr-env'
 }
+
+masterc3d_source = r'\\bldr-struct1\CAD_Resource\Civil_Library\Templates\MasterC3D_2018.dwt'

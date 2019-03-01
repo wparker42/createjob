@@ -10,6 +10,7 @@ import re
 class CreateJobApp(tk.Tk):
     """docstring for CreateJobApp"""
     def __init__(self):
+        # Initialize the gui
         tk.Tk.__init__(self)
 
         departments = [
@@ -69,6 +70,21 @@ class CreateJobApp(tk.Tk):
             )
             self.departselect.grid(row=r,column=0)
             r+=1
+
+    def trace_calls_and_returns(frame, event, arg):
+        co = frame.f_code
+        func_name = co.co_name
+        if func_name == 'write':
+            # Ignore write() calls from print statements
+            return
+        line_no = frame.f_lineno
+        filename = co.co_filename
+        if event == 'call':
+            print('Call to %s on line %s of %s' % (func_name, line_no, filename))
+            return trace_calls_and_returns
+        elif event == 'return':
+            print('%s => %s' % (func_name, arg))
+        return
 
     def validate_form(self):
         # department was selected and template is accessible
@@ -136,14 +152,19 @@ class CreateJobApp(tk.Tk):
 
     def createjobfolder(self):
         if self.validate_form():
-            print("Validation passed, creating folders...")
+            print("Validation passed, initializing...")
             departmentname, templatepath = self.templatesource
+
+            print("Fetching templates")
+
             # Copy tree operation
             try:
                 shutil.copytree(templatepath, self.intent_dir)
+
             # Directories are the same
             except shutil.Error as e:
                 print('Directory not copied. Error: %s' % e)
+
             # Any error saying that the directory doesn't exist
             except OSError as e:
                 print('Directory not copied. Error: %s' % e)
@@ -164,7 +185,18 @@ class CreateJobApp(tk.Tk):
                         newdirectoryname = "_" + self.jobnametxt
                         newdirpath = os.path.join(root, newdirectoryname)
                         os.rename(olddirectoryname, newdirpath)
-            print("done.")
+
+            # Copy the MasterC3D.dwt (if civil job)
+            if self.departnum == 1: #i.e. is civil
+                masterc3d_dest = (r'\Drawings\Templates' + '/' + \
+                                 self.jobnumtxt + ' - MasterC3D.dwt')
+                template_dest = self.intent_dir + '/' + masterc3d_dest
+                try:
+                    shutil.copyfile(masterc3d_source, template_dest)
+                except shutil.Error as e:
+                    print('Directory not coppied. Error: %s' % e)
+
+            print("Copy operation completed.")
 
             tkMessageBox.showinfo("Success", "Job Folder Created")
             self.destroy()
