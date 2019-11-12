@@ -3,6 +3,7 @@ import sys
 import tkinter as tk
 from tkinter import messagebox as tkMessageBox
 import shutil
+from pathvalidate import ValidationError, validate_filename, validate_filepath
 from mastertemplates import *
 import re
 
@@ -105,14 +106,14 @@ class CreateJobApp(tk.Tk):
             self.is_structural = True if self.departnum == 3 else False
 
         # job number isnt blank
-        if self.jobnum.get() is "":
+        if self.jobnum.get() == "":
             self.statusmsgtxt.set("Enter number.")
             raise ValueError("Job number out of range")
         else:
             self.jobnumtxt = self.jobnum.get()
 
         # job name isnt blank
-        if self.jobname.get() is "":
+        if self.jobname.get() == "":
             self.statusmsgtxt.set("Enter name.")
             raise ValueError("Job name out of range")
         else:
@@ -125,10 +126,30 @@ class CreateJobApp(tk.Tk):
         else:
             pass
 
-        # target directory doesnt already exist
+        # Job name and number dont have illegal charachters
+        try:
+            validate_filename(self.jobnametxt)
+        except ValidationError as e:
+            self.statusmsgtxt.set(e.reason.name)
+            raise ValueError("{}\n".format(e))
+
+        try:
+            validate_filename(self.jobnumtxt)
+        except ValidationError as e:
+            self.statusmsgtxt.set(e.reason.name)
+            raise ValueError("{}\n".format(e))
+
+        # target directory is valid and doesnt already exist
         intent_dir = self.server_path + '/' + self.jobnum.get()
-        if self.is_structural:
+        if self.is_structural: #structural adds the name to the path
             intent_dir = intent_dir + " " + self.jobnametxt
+        
+        try:
+            validate_filepath(intent_dir)
+        except ValidationError as e:
+            self.statusmsgtxt.set(e.reason.name)
+            raise ValueError(e)
+
         if os.path.isdir(intent_dir):
             self.statusmsgtxt.set("Folder already exists.")
             raise ValueError("Folder already exists")

@@ -1,0 +1,2 @@
+pathvalidate==0.29.0
+tkinter==8.6
