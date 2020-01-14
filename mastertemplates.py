@@ -33,7 +33,7 @@ serverpathdict = {
     'Denver (R:\)': r'\\server-den\den-str',
     'Boulder (J:\)': r'\\bldr-civil1\bldr_civil',
     'Fort Collins (V:\)': r'\\server-fc-new\fc-civil-jobs',
-    'Winter Park (K:\)': r'\\server-wpk\WP-Civil-Jobs',
+    'Winter Park (K:\)': r'\\wpk-files\WP-Civil-Jobs',
     'Boulder (Z:\)': r'\\BLDR-STRUCT1\bldr_structural',
     'Fort Collins (Y:\)': r'\\server-fc-new\fc-Structural-Jobs',
     'Winter Park (X:\)': r'\\server-wp-new\WP-Jobs',
