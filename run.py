@@ -145,7 +145,7 @@ class CreateJobApp(tk.Tk):
             intent_dir = intent_dir + " " + self.jobnametxt
         
         try:
-            validate_filepath(intent_dir)
+            validate_filepath(intent_dir, "auto")
         except ValidationError as e:
             self.statusmsgtxt.set(e.reason.name)
             raise ValueError(e)
