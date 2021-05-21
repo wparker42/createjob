@@ -190,6 +190,14 @@ class CreateJobApp(tk.Tk):
             except OSError as e:
                 print('Directory not copied. Error: %s' % e)
 
+            # Copy the MasterC3D.dwt (if civil job) from M drive
+            if self.departnum == 1: #i.e. is civil
+                template_dest = self.intent_dir + '/' + r'\Drawings\Templates'
+                try:
+                    shutil.copytree(masterc3d_source, template_dest, dirs_exist_ok=True)
+                except shutil.Error as e:
+                    print('Directory not coppied. Error: %s' % e)
+
             # Rename file & folder operation
             for root, dirs, files in os.walk(self.intent_dir):
                 # Exclude hidden files and folders
@@ -206,14 +214,6 @@ class CreateJobApp(tk.Tk):
                         newdirectoryname = "_" + self.jobnametxt
                         newdirpath = os.path.join(root, newdirectoryname)
                         os.rename(olddirectoryname, newdirpath)
-
-            # Copy the MasterC3D.dwt (if civil job)
-            if self.departnum == 1: #i.e. is civil
-                template_dest = self.intent_dir + '/' + r'\Drawings\Templates'
-                try:
-                    shutil.copytree(masterc3d_source, template_dest, dirs_exist_ok=True)
-                except shutil.Error as e:
-                    print('Directory not coppied. Error: %s' % e)
 
             print("Copy operation completed.")
 
