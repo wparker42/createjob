@@ -41,4 +41,4 @@ serverpathdict = {
     'Environmental (N:\)': r'\\bldr-civil1\bdr-env'
 }
 
-masterc3d_source = r'\\bldr-struct1\CAD_Resource\Civil_Library\Support\Templates\MasterC3D_2018.dwt'
+masterc3d_source = r'\\bldr-struct1\CAD_Resource\Civil_Library\Support\Templates'

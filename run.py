@@ -209,11 +209,9 @@ class CreateJobApp(tk.Tk):
 
             # Copy the MasterC3D.dwt (if civil job)
             if self.departnum == 1: #i.e. is civil
-                masterc3d_dest = (r'\Drawings\Templates' + '/' + \
-                                 self.jobnumtxt + ' - MasterC3D.dwt')
-                template_dest = self.intent_dir + '/' + masterc3d_dest
+                template_dest = self.intent_dir + '/' + r'\Drawings\Templates'
                 try:
-                    shutil.copyfile(masterc3d_source, template_dest)
+                    shutil.copytree(masterc3d_source, template_dest, dirs_exist_ok=True)
                 except shutil.Error as e:
                     print('Directory not coppied. Error: %s' % e)
 
